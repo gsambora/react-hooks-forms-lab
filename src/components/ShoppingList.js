@@ -4,7 +4,7 @@ import Filter from "./Filter";
 import Item from "./Item";
 import { v4 as uuid } from "uuid";
 
-function ShoppingList({ items }) {
+function ShoppingList({handleNewItem, items }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchItem, setSearchItem] = useState("");
 
@@ -27,23 +27,7 @@ function ShoppingList({ items }) {
     return item.category === selectedCategory;
   });
 
- const [itemName, setNewName] = useState("");
- const [itemCategory, setNewCategory] = useState("All");
 
- function handleNewItem(event) {
-  event.preventDefault();
-
-  setNewName(event.target[0].value);
-  setNewCategory(event.target[1].value);
-
-  const newItem = {
-    id: uuid(), // the `uuid` library can be used to generate a unique id
-    name: itemName,
-    category: itemCategory,
-  };
-  
-  console.log(newItem);
- }
 
   return (
     <div className="ShoppingList">
